@@ -22,7 +22,7 @@
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-font pango:DejaVu Sans Mono 8
+font pango:Monospace 9
 
 ####################
 #      COLOURS     #
@@ -49,27 +49,40 @@ client.background       #2d2d2d
 ####################
 #     AUTOLOCK     #
 ####################
-bindcode 150 exec xautolock -locknow # 150 = Zz key
+bindcode 150 exec xautolock -locknow # 150 = Half moon key
 exec xautolock -time 10 -locker '~/.i3/lock.sh' &
 
 ####################
 #    AUTOSTART     #
 ####################
+exec feh --bg-tile wallpapers/transistor.jpg
 exec xchat
 exec icedove
-exec SpiderOak
+exec --no-startup-id SpiderOak
 exec firefox
 exec --no-startup-id nm-applet
 
-####################
-#   APP SETTINGS   #
-####################
-assign [class="Xchat"]   91:xchat
-assign [class="Icedove"] mail
-assign [class="Firefox"] 90:browser
+############################
+#   APPLICATION SETTINGS   #
+############################
+set $browser 90:browser
+set $xchat   91:xchat
+set $mail    mail
+set $steam   steam
 for_window [class="SpiderOak"] floating enable, border none
-# PKT window should be floating
-for_window [title="Interface"] floating enable
+assign [class="Firefox"] $browser
+assign [class="Xchat"]   $xchat
+assign [class="Icedove"] $mail
+assign [class="Steam"]   $steam
+for_window [class="Steam" title="Friends"] floating enable
+
+#######################
+# WORKSPACE LOCATIONS #
+#######################
+workspace $browser output DVI-I-0
+workspace $mail    output DVI-I-0
+workspace $xchat   output DVI-I-1
+workspace $steam   output DVI-I-1
 
 ####################
 #   WM SETTINGS    #
@@ -79,16 +92,20 @@ floating_minimum_size 320 x 240
 floating_maximum_size  -1 x  -1
 
 # Hide window decorations
-new_window pixel 2 
+new_window pixel 2
+new_float normal 2
 
 # Hide the borders of tiles that touch edge of the screen
-hide_edge_borders both 
+hide_edge_borders both
 
 # Stop window focus from following the mouse
 focus_follows_mouse no
 
 # Switch back to the previous workspace when hitting this workspace's key
 workspace_auto_back_and_forth yes
+
+# Disable the mouse jumping between monitors when switching workspaces
+mouse_warping none
 
 ####################
 #    STATUS BAR    #
@@ -97,10 +114,10 @@ workspace_auto_back_and_forth yes
 # finds out, if available)
 bar {
 	colors {
-		background $back-inact 
+		background $back-inact
 		statusline $text
 		separator  $bor-in
-		# selectors        border  backgr.     text
+		# selectors        border  background  text
 		focused_workspace  $border $background $text
 		active_workspace   $bor-in $back-inact $text
 		inactive_workspace $bor-in $back-inact $t-in
@@ -108,8 +125,26 @@ bar {
 	}
 	position top
         status_command i3status -c ~/.i3/i3status.conf
-	tray_output LVDS1
+	tray_output DVI-I-0
 	strip_workspace_numbers yes
+	output DVI-I-0
+}
+
+bar {
+	colors {
+		background $back-inact
+		statusline $text
+		separator  $bor-in
+		# selectors        border  background  text
+		focused_workspace  $border $background $text
+		active_workspace   $bor-in $back-inact $text
+		inactive_workspace $bor-in $back-inact $t-in
+		urgent_workspace   $bor-ur $back-urgen $t-ur
+	}
+	position top
+	tray_output none
+	strip_workspace_numbers yes
+	output DVI-I-1
 }
 
 ####################
@@ -191,8 +226,8 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-bindsym $mod+b workspace number 90
-bindsym $mod+x workspace number 91
+bindsym $mod+b workspace $browser
+bindsym $mod+x workspace $xchat
 # cycle through workspaces
 bindsym $mod+$mod2+Tab workspace prev
 bindsym $mod+Tab       workspace next
@@ -210,13 +245,17 @@ bindsym $mod+$mod2+7 move container to workspace number 7
 bindsym $mod+$mod2+8 move container to workspace number 8
 bindsym $mod+$mod2+9 move container to workspace number 9
 bindsym $mod+$mod2+0 move container to workspace number 10
-bindsym $mod+$mod2+b move container to workspace 90: browser
-bindsym $mod+$mod2+x move container to workspace 91: xchat
+bindsym $mod+$mod2+b move container to workspace $browser
+bindsym $mod+$mod2+x move container to workspace $xchat
 # move window to a named workspace
 bindsym $mod+$mod2+m exec i3-input -F 'move container to workspace "%s"' -P 'Enter workspace name: '
 
 # rename workspaces
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
+# Move workspace between monitors
+bindsym $mod+p move workspace to output left
+bindsym $mod+o move workspace to output down
 
 # Make the currently focused window a scratchpad
 bindsym $mod+$mod2+minus move scratchpad
@@ -230,14 +269,11 @@ bindsym $mod+$mod2+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+$mod2+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Notebook keys
-# Adjust brightness
-bindcode 232 exec xbacklight -dec 10
-bindcode 233 exec xbacklight -inc 10
+# Special keys
 # Adjust volume
 bindcode 121 exec amixer set Master toggle
-bindcode 122 exec amixer set Master 3-
-bindcode 123 exec amixer set Master 3+
+bindcode 122 exec amixer set Master 5%-
+bindcode 123 exec amixer set Master 5%+
 
 # Take screenshots
 bindcode --release 107 exec scrot "/home/xeryustc/Pictures/screen_%Y-%m-%d_%H:%I:%S.png"
@@ -268,3 +304,4 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+

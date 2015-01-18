@@ -2,14 +2,15 @@ URxvt.foreground:White
 URxvt.background:Black
 URxvt.transparent:True
 URxvt.shading:15
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+#URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt.font: xft:monospace:size=9:antialias=true:hinting=true
 URxvt.scrollColor:#484848
 URxvt.troughColor:#DDDDDD
 URxvt.scrollBar_right:True
 #URxvt.scrollBar_floating:False
 URxvt.saveLines:2048
 URxvt.cursorUnderline: False
-URxvt.cursorBlink: False 
+URxvt.cursorBlink: False
 URxvt.scrollstyle: plain
 # Next two lines are to enable paste with C-S-v
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
@@ -24,3 +25,6 @@ URxvt.colorUL: #4682B4
 # Don't scroll term in LESS, VIM etc
 URxvt.secondaryScreen: True
 URxvt.secondaryScroll: False
+
+# Change colors
+URxvt.color12: #1122FF
