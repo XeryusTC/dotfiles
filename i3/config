@@ -50,12 +50,13 @@ client.background       #2d2d2d
 #     AUTOLOCK     #
 ####################
 bindcode 150 exec xautolock -locknow # 150 = Half moon key
-exec xautolock -time 10 -locker '~/.i3/lock.sh' &
+exec xautolock -time 30 -locker '~/.i3/lock.sh' &
 
 ####################
 #    AUTOSTART     #
 ####################
 exec feh --bg-tile wallpapers/transistor.jpg
+exec redshift
 exec xchat
 exec icedove
 exec --no-startup-id SpiderOak
@@ -254,8 +255,8 @@ bindsym $mod+$mod2+m exec i3-input -F 'move container to workspace "%s"' -P 'Ent
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # Move workspace between monitors
-bindsym $mod+p move workspace to output left
-bindsym $mod+o move workspace to output down
+bindsym $mod+$mod2+p move workspace to output left
+bindsym $mod+$mod2+o move workspace to output down
 
 # Make the currently focused window a scratchpad
 bindsym $mod+$mod2+minus move scratchpad
@@ -280,6 +281,9 @@ bindcode --release 107 exec scrot "/home/xeryustc/Pictures/screen_%Y-%m-%d_%H:%I
 bindcode --release $mod+107 exec scrot -u "/home/xeryustc/Pictures/screen_%Y-%m-%d_%H:%I:%S.png"
 bindcode --release $mod2+107 exec scrot -s "/home/xeryustc/Pictures/screen_%Y-%m-%d_%H:%I:%S.png"
 
+###################
+#   EXTRA MODES   #
+###################
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -304,4 +308,20 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Power management
+set $mode_system System (l)ock, l(o)gout, (s)uspend, (h)ibernate, (r)eboot, sh(u)tdown
+mode "$mode_system" {
+	bindsym l exec --no-startup-id ~/.i3/exit.sh lock, mode "default"
+	bindsym o exec --no-startup-id ~/.i3/exit.sh logout, mode "default"
+	bindsym s exec --no-startup-id ~/.i3/exit.sh suspend, mode "default"
+	bindsym h exec --no-startup-id ~/.i3/exit.sh hibernate, mode "default"
+	bindsym r exec --no-startup-id ~/.i3/exit.sh reboot, mode "default"
+	bindsym u exec --no-startup-id ~/.i3/exit.sh shutdown, mode "default"
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
 
