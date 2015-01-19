@@ -27,4 +27,4 @@ URxvt.secondaryScreen: True
 URxvt.secondaryScroll: False
 
 # Change colors
-URxvt.color12: #1122FF
+*color12: #2233FF
