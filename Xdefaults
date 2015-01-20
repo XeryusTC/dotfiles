@@ -27,4 +27,19 @@ URxvt.secondaryScreen: True
 URxvt.secondaryScroll: False
 
 # Change colors
-*color12: #2233FF
+*color0: black
+*color1: red3
+*color2: green3
+*color3: yellow3
+*color4: blue2
+*color5: magenta3
+*color6: cyan3
+*color7: gray90
+*color8: grey90
+*color9: red
+*color10: green
+*color11: yellow
+*color12: #0060FF
+*color13: #FF30FF
+*color14: cyan
+*color15: white
