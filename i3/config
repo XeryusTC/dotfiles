@@ -50,7 +50,7 @@ client.background       #2d2d2d
 #     AUTOLOCK     #
 ####################
 bindcode 150 exec xautolock -locknow # 150 = Half moon key
-exec xautolock -time 30 -locker '~/.i3/lock.sh' &
+exec xautolock -time 10 -locker '~/.i3/lock.sh' &
 
 ####################
 #    AUTOSTART     #
