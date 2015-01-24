@@ -49,13 +49,13 @@ client.background       #2d2d2d
 ####################
 #     AUTOLOCK     #
 ####################
-bindcode 150 exec xautolock -locknow # 150 = Half moon key
+bindcode 150 exec xautolock -locknow # 150 = Zz key
 exec xautolock -time 10 -locker '~/.i3/lock.sh' &
 
 ####################
 #    AUTOSTART     #
 ####################
-exec feh --bg-tile wallpapers/transistor.jpg
+exec feh --bg-tile wallpapers/fallingstar.jpg
 exec redshift
 exec xchat
 exec icedove
@@ -66,24 +66,15 @@ exec --no-startup-id nm-applet
 ############################
 #   APPLICATION SETTINGS   #
 ############################
-set $browser 90:browser
-set $xchat   91:xchat
-set $mail    mail
-set $steam   steam
-for_window [class="SpiderOak"] floating enable, border none
-assign [class="Firefox"] $browser
-assign [class="Xchat"]   $xchat
-assign [class="Icedove"] $mail
-assign [class="Steam"]   $steam
-for_window [class="Steam" title="Friends"] floating enable
+set $mon-internal LVDS1
 
-#######################
-# WORKSPACE LOCATIONS #
-#######################
-workspace $browser output DVI-I-0
-workspace $mail    output DVI-I-0
-workspace $xchat   output DVI-I-1
-workspace $steam   output DVI-I-1
+set $WSbrowser 100:browser
+set $WSxchat   1011:xchat
+set $WSmail    mail
+for_window [class="SpiderOak"] floating enable, border none
+assign [class="Firefox"] $WSbrowser
+assign [class="Xchat"]   $WSxchat
+assign [class="Icedove"] $WSmail
 
 ####################
 #   WM SETTINGS    #
@@ -126,26 +117,8 @@ bar {
 	}
 	position top
         status_command i3status -c ~/.i3/i3status.conf
-	tray_output DVI-I-0
+	tray_output $mon-internal
 	strip_workspace_numbers yes
-	output DVI-I-0
-}
-
-bar {
-	colors {
-		background $back-inact
-		statusline $text
-		separator  $bor-in
-		# selectors        border      background  text
-		focused_workspace  $background $background $text
-		active_workspace   $background $background $t-in
-		inactive_workspace $back-inact $back-inact $t-in
-		urgent_workspace   $back-urgen $back-urgen $t-ur
-	}
-	position top
-	tray_output none
-	strip_workspace_numbers yes
-	output DVI-I-1
 }
 
 ####################
@@ -227,8 +200,8 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-bindsym $mod+b workspace $browser
-bindsym $mod+x workspace $xchat
+bindsym $mod+b workspace $WSbrowser
+bindsym $mod+x workspace $WSxchat
 # cycle through workspaces
 bindsym $mod+$mod2+Tab workspace prev
 bindsym $mod+Tab       workspace next
@@ -246,8 +219,8 @@ bindsym $mod+$mod2+7 move container to workspace number 7
 bindsym $mod+$mod2+8 move container to workspace number 8
 bindsym $mod+$mod2+9 move container to workspace number 9
 bindsym $mod+$mod2+0 move container to workspace number 10
-bindsym $mod+$mod2+b move container to workspace $browser
-bindsym $mod+$mod2+x move container to workspace $xchat
+bindsym $mod+$mod2+b move container to workspace $WSbrowser
+bindsym $mod+$mod2+x move container to workspace $WSxchat
 # move window to a named workspace
 bindsym $mod+$mod2+m exec i3-input -F 'move container to workspace "%s"' -P 'Enter workspace name: '
 
