@@ -69,7 +69,7 @@ exec --no-startup-id nm-applet
 set $mon-internal LVDS1
 
 set $WSbrowser 100:browser
-set $WSxchat   1011:xchat
+set $WSxchat   101:xchat
 set $WSmail    mail
 for_window [class="SpiderOak"] floating enable, border none
 assign [class="Firefox"] $WSbrowser
@@ -243,7 +243,10 @@ bindsym $mod+$mod2+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+$mod2+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Special keys
+# Notebook keys
+# Adjust brightness
+bindcode 232 exec xbacklight -dec 10
+bindcode 233 exec xbacklight -inc 10
 # Adjust volume
 bindcode 121 exec amixer set Master toggle
 bindcode 122 exec amixer set Master 5%-
