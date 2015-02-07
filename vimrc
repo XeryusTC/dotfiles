@@ -1,6 +1,8 @@
 filetype plugin indent on
 syntax on
 set number
+set tabstop=4
+set shiftwidth=4
 
 " automagically remove trailing whitespace for certain files when saving
 function! <SID>StripTrailingWhitespaces()
