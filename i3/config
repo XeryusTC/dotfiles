@@ -30,9 +30,9 @@ font pango:Monospace 9
 set $background #484848
 set $back-inact #2d2d2d
 set $back-urgen #480000
-set $border     #585858
-set $bor-in     #494949
-set $bor-ur     #580000
+set $border     #484848
+set $bor-in     #2d2d2d
+set $bor-ur     #480000
 set $text       #dcdcdc
 set $t-in       #888888
 set $t-ur       #dc0000
@@ -84,8 +84,8 @@ floating_minimum_size 320 x 240
 floating_maximum_size  -1 x  -1
 
 # Hide window decorations
-new_window pixel 2
-new_float normal 2
+new_window pixel 3
+new_float normal 3
 
 # Hide the borders of tiles that touch edge of the screen
 hide_edge_borders both
