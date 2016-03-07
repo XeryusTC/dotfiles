@@ -83,8 +83,8 @@ for_window[title="^Figure *"] floating enable
 #######################
 # WORKSPACE LOCATIONS #
 #######################
-set $mon-left  DVI-I-1
-set $mon-right DVI-I-0
+set $mon-left  DP-0
+set $mon-right DVI-I-1
 # Assign workspaces to the right monitor
 workspace $WSbrowser output $mon-right
 workspace $WSmail    output $mon-right
@@ -144,10 +144,9 @@ bar {
 		urgent_workspace   $back-urgen $back-urgen $t-ur
 	}
 	position top
-        status_command i3status -c ~/.i3/i3status.conf
-	tray_output DVI-I-0
+	tray_output none
 	strip_workspace_numbers yes
-	output DVI-I-0
+	output $mon-right
 }
 
 bar {
@@ -162,9 +161,10 @@ bar {
 		urgent_workspace   $back-urgen $back-urgen $t-ur
 	}
 	position top
-	tray_output none
+    status_command i3status -c ~/.i3/i3status.conf
+	tray_output primary
 	strip_workspace_numbers yes
-	output DVI-I-1
+	output $mon-left
 }
 
 ####################
