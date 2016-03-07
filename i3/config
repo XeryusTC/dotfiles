@@ -59,7 +59,7 @@ exec feh --bg-tile wallpapers/transistor.jpg
 exec redshift
 exec xchat
 exec icedove
-exec --no-startup-id SpiderOak
+exec --no-startup-id SpiderOakONE
 exec firefox
 exec --no-startup-id nm-applet
 
@@ -71,13 +71,14 @@ set $WSxchat   200:xchat
 set $WSmail    mail
 set $WSsteam   steam
 set $WSmusic   music
-for_window [class="SpiderOak"] floating enable, border none
+for_window [class="SpiderOakONE"] floating enable, border none
 assign [class="Firefox"]    $WSbrowser
 assign [class="Xchat"]      $WSxchat
 assign [class="Icedove"]    $WSmail
 assign [class="Steam"]      $WSsteam
 assign [class="Quodlibet"]  $WSmusic
 for_window [class="Steam" title="Friends"] floating enable
+for_window[title="^Figure *"] floating enable
 
 #######################
 # WORKSPACE LOCATIONS #
