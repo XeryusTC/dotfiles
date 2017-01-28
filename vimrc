@@ -1,8 +1,11 @@
+execute pathogen#infect()
 filetype plugin indent on
 syntax on
 set number
 set tabstop=4
 set shiftwidth=4
+let g:pyindent_open_paren = '&sw'
+let g:pyindent_nested_paren = '&sw'
 
 " automagically remove trailing whitespace for certain files when saving
 function! <SID>StripTrailingWhitespaces()

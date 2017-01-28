@@ -2,3 +2,5 @@
 *.geany
 notes
 virtualenv/
+venv/
+passwords
