@@ -4,3 +4,4 @@ notes
 virtualenv/
 venv/
 passwords
+.python-version

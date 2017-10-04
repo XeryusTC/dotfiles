@@ -3,7 +3,8 @@ URxvt.background:Black
 URxvt.transparent:True
 URxvt.shading:15
 #URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt.font: xft:monospace:size=9:antialias=true:hinting=true
+URxvt.font: xft:DejaVu Sans Mono:size=9:antialias=true:hinting=true
+URxvt.letterSpace: -1
 URxvt.scrollColor:#484848
 URxvt.troughColor:#DDDDDD
 URxvt.scrollBar_right:True

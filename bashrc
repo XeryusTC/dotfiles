@@ -137,3 +137,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export ANSIBLE_NOCOWS=1

@@ -59,7 +59,7 @@ exec xautolock -time 10 -locker '~/.i3/lock.sh' &
 exec feh --bg-tile wallpapers/transistor.jpg
 exec redshift
 exec xchat
-exec icedove
+exec thunderbird
 exec --no-startup-id SpiderOakONE
 exec firefox
 exec --no-startup-id nm-applet
@@ -76,7 +76,7 @@ set $WSmusic   music
 for_window [class="SpiderOakONE"] floating enable, border none
 assign [class="Firefox"]    $WSbrowser
 assign [class="Xchat"]      $WSxchat
-assign [class="Icedove"]    $WSmail
+assign [class="Thunderbird"]    $WSmail
 assign [class="Steam"]      $WSsteam
 assign [class="Rhythmbox"]  $WSmusic
 for_window [class="Steam" title="Friends"] floating enable
