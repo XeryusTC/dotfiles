@@ -3,7 +3,8 @@ URxvt.background:Black
 URxvt.transparent:True
 URxvt.shading:15
 #URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt.font: xft:monospace:size=9:antialias=true:hinting=true
+URxvt.font: xft:DejaVu Sans Mono:size=9:antialias=true:hinting=true
+URxvt.letterSpace: -1
 URxvt.scrollColor:#484848
 URxvt.troughColor:#DDDDDD
 URxvt.scrollBar_right:True
@@ -13,11 +14,12 @@ URxvt.cursorUnderline: False
 URxvt.cursorBlink: False
 URxvt.scrollstyle: plain
 # Next two lines are to enable paste with C-S-v
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755: False
 
 # Enable clickable URLs (to open in firefox)
-URxvt.perl-ext-common: default,matcher,clipboard
+URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 URxvt.colorUL: #4682B4

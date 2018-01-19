@@ -55,11 +55,11 @@ exec xautolock -time 10 -locker '~/.i3/lock.sh' &
 ####################
 #    AUTOSTART     #
 ####################
-exec feh --bg-tile wallpapers/fallingstar.jpg
+exec_always feh --bg-tile wallpapers/Black-White-Lion-1600x900.jpg
 exec redshift
 exec xchat
 exec icedove
-exec --no-startup-id SpiderOak
+exec --no-startup-id SpiderOakONE
 exec firefox
 exec --no-startup-id nm-applet
 
@@ -71,10 +71,10 @@ set $mon-internal LVDS1
 set $WSbrowser 100:browser
 set $WSxchat   101:xchat
 set $WSmail    mail
-for_window [class="SpiderOak"] floating enable, border none
+for_window [class="SpiderOakONE"] floating enable, border none
 assign [class="Firefox"] $WSbrowser
 assign [class="Xchat"]   $WSxchat
-assign [class="Icedove"] $WSmail
+assign [class="Thunderbird"] $WSmail
 
 ####################
 #   WM SETTINGS    #
@@ -84,8 +84,8 @@ floating_minimum_size 320 x 240
 floating_maximum_size  -1 x  -1
 
 # Hide window decorations
-new_window pixel 3
-new_float normal 3
+new_window pixel 2
+new_float normal 2
 
 # Hide the borders of tiles that touch edge of the screen
 hide_edge_borders both
@@ -187,7 +187,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 # focus the child container
-bindsym $mod+$mod2+a focus child
+bindsym $mod+$mod2+A focus child
 
 # switch to workspace
 bindsym $mod+1 workspace number 1

@@ -15,4 +15,5 @@ Software required to make everything work (in case I forget):
 * imagemagick
 * scrot
 * xautolock
+* xbacklight
 * xclip

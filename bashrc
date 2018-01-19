@@ -137,3 +137,21 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Disable Gtk output of some programs
+_supress() {
+	eval "$1() { \$(which $1) \"\$@\" 2>&1 | tr -d '\r' | grep -v \"$2\"; }"
+}
+
+_supress virt-install "Gtk-WARNING\|Drawing a gadget with negative dimensions."
+
+LIBVIRT_DEFAULT_URI=qemu:///system
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
